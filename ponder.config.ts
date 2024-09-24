@@ -7,12 +7,24 @@ import { abi } from "./abis/abi";
 export default createConfig({
   networks: {
     baseSepolia: {
+      //maxRequestsPerSecond: 1000,
+
       chainId: 84532,
-      transport: loadBalance([
+      transport:
+          loadBalance([
         //http("https://cloudflare-eth.com"),
         //http("https://eth-mainnet.public.blastapi.io"),
-        //webSocket("wss://ethereum-rpc.publicnode.com"),
-        rateLimit(http(process.env.PONDER_RPC_URL_84532), { requestsPerSecond: 49 }),
+        //
+        //
+
+            //webSocket(process.env.PONDER_RPC_URL_84532_WSS),
+        //webSocket(process.env.PONDER_RPC_URL_84532_WSS_2),
+        //rateLimit(http(process.env.PONDER_RPC_URL_84532), { requestsPerSecond: 49 }),
+            rateLimit(http(process.env.PONDER_RPC_URL_84532), { requestsPerSecond: 49 }),
+            rateLimit(http(process.env.PONDER_RPC_URL_84532_2), { requestsPerSecond: 49 }),
+            //http(process.env.PONDER_RPC_URL_84532),
+            //http(process.env.PONDER_RPC_URL_84532_2),
+
       ]),
       //transport: rateLimit(http("https://rpc.ankr.com/eth"), { requestsPerSecond: 5 }),//http(process.env.PONDER_RPC_URL_1)
 

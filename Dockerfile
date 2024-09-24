@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Build the TypeScript code (if necessary)
-RUN npm run codegen
+#RUN npm run codegen
 
 # Expose the port that the application will run on (change if needed)
 EXPOSE 3000

@@ -22,7 +22,7 @@ export default createSchema((p) => ({
 
   // PlantLifetimeAssigned event
   PlantLifetimeAssignedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     plantId: p.bigint().references("Plant.id"),
     lifetime: p.bigint(),
@@ -31,7 +31,7 @@ export default createSchema((p) => ({
 
   // PlantPointsAssigned event
   PlantPointsAssignedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     plantId: p.bigint().references("Plant.id"),
     addedPoints: p.bigint(),
@@ -48,14 +48,14 @@ export default createSchema((p) => ({
 
   // VillageProductionClaimed event
   VillageProductionClaimedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.int(),
   }),
 
   // VillageProductionXPClaimCooldownActive event
   VillageProductionXPClaimCooldownActiveEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.bigint(),
     currentTime: p.bigint(),
@@ -64,7 +64,7 @@ export default createSchema((p) => ({
 
   // VillageProductionXPClaimed event
   VillageProductionXPClaimedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.bigint(),
     claimTime: p.bigint(),
@@ -73,7 +73,7 @@ export default createSchema((p) => ({
 
   // VillageSpeedUpWithSeed event
   VillageSpeedUpWithSeedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.int(),
     speedUpCost: p.bigint(),
@@ -82,7 +82,7 @@ export default createSchema((p) => ({
 
   // VillageUpgradedWithLeaf event
   VillageUpgradedWithLeafEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.int(),
     upgradeCost: p.bigint(),
@@ -91,7 +91,7 @@ export default createSchema((p) => ({
 
   // TownSpeedUpWithSeed event
   TownSpeedUpWithSeedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.int(),
     speedUpCost: p.bigint(),
@@ -100,7 +100,7 @@ export default createSchema((p) => ({
 
   // TownUpgradedWithLeaf event
   TownUpgradedWithLeafEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.int(),
     upgradeCost: p.bigint(),
@@ -111,7 +111,7 @@ export default createSchema((p) => ({
 
   // QuestStarted event
   QuestStartedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     farmerSlotId: p.bigint(),
     difficulty: p.int(),
@@ -121,7 +121,7 @@ export default createSchema((p) => ({
 
   // QuestCommitted event
   QuestCommittedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     farmerSlotId: p.bigint(),
     pseudoRndBlock: p.bigint(),
@@ -129,7 +129,7 @@ export default createSchema((p) => ({
 
   // QuestFinalized event
   QuestFinalizedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     farmerSlotId: p.bigint(),
     player: p.string(),
@@ -139,7 +139,7 @@ export default createSchema((p) => ({
 
   // QuestReset event
   QuestResetEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     farmerSlotId: p.bigint(),
     player: p.string(),
@@ -147,14 +147,14 @@ export default createSchema((p) => ({
 
   // XPAdded event (relates to Land)
   XPAddedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     tokenId: p.bigint().references("Land.id"),
     amount: p.bigint(),
   }),
 
   // WareHouseLifetimeAssigned event
   WareHouseLifetimeAssignedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     plantId: p.bigint().references("Plant.id"),
     lifetime: p.bigint(),
@@ -163,7 +163,7 @@ export default createSchema((p) => ({
 
   // WareHousePlantPointsAssigned event
   WareHousePlantPointsAssignedEvent: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     landId: p.bigint().references("Land.id"),
     plantId: p.bigint().references("Plant.id"),
     addedPoints: p.bigint(),

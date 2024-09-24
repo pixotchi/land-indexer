@@ -75,7 +75,8 @@ ponder.on("LandContract:PlantLifetimeAssigned", async ({ event, context }) => {
   });
 
   await PlantLifetimeAssignedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(),//crypto.randomUUID(),
+    //id: `${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       plantId: event.args.plantId,
@@ -96,7 +97,7 @@ ponder.on("LandContract:PlantPointsAssigned", async ({ event, context }) => {
   });
 
   await PlantPointsAssignedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       plantId: event.args.plantId,
@@ -110,7 +111,7 @@ ponder.on("LandContract:VillageProductionClaimed", async ({ event, context }) =>
   const { VillageProductionClaimedEvent } = context.db;
 
   await VillageProductionClaimedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -122,7 +123,7 @@ ponder.on("LandContract:VillageProductionXPClaimCooldownActive", async ({ event,
   const { VillageProductionXPClaimCooldownActiveEvent } = context.db;
 
   await VillageProductionXPClaimCooldownActiveEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -136,7 +137,7 @@ ponder.on("LandContract:VillageProductionXPClaimed", async ({ event, context }) 
   const { VillageProductionXPClaimedEvent } = context.db;
 
   await VillageProductionXPClaimedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -150,7 +151,7 @@ ponder.on("LandContract:VillageSpeedUpWithSeed", async ({ event, context }) => {
   const { VillageSpeedUpWithSeedEvent } = context.db;
 
   await VillageSpeedUpWithSeedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -164,7 +165,7 @@ ponder.on("LandContract:VillageUpgradedWithLeaf", async ({ event, context }) => 
   const { VillageUpgradedWithLeafEvent } = context.db;
 
   await VillageUpgradedWithLeafEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -178,7 +179,7 @@ ponder.on("LandContract:TownSpeedUpWithSeed", async ({ event, context }) => {
   const { TownSpeedUpWithSeedEvent } = context.db;
 
   await TownSpeedUpWithSeedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -192,7 +193,7 @@ ponder.on("LandContract:TownUpgradedWithLeaf", async ({ event, context }) => {
   const { TownUpgradedWithLeafEvent } = context.db;
 
   await TownUpgradedWithLeafEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       buildingId: event.args.buildingId,
@@ -206,7 +207,7 @@ ponder.on("LandContract:QuestStarted", async ({ event, context }) => {
   const { QuestStartedEvent } = context.db;
 
   await QuestStartedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       farmerSlotId: event.args.farmerSlotId,
@@ -221,7 +222,7 @@ ponder.on("LandContract:QuestCommitted", async ({ event, context }) => {
   const { QuestCommittedEvent } = context.db;
 
   await QuestCommittedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id:crypto.randomUUID(), // `${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       farmerSlotId: event.args.farmerSlotId,
@@ -234,7 +235,7 @@ ponder.on("LandContract:QuestFinalized", async ({ event, context }) => {
   const { QuestFinalizedEvent } = context.db;
 
   await QuestFinalizedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       farmerSlotId: event.args.farmerSlotId,
@@ -249,7 +250,7 @@ ponder.on("LandContract:QuestReset", async ({ event, context }) => {
   const { QuestResetEvent } = context.db;
 
   await QuestResetEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       farmerSlotId: event.args.farmerSlotId,
@@ -262,7 +263,7 @@ ponder.on("LandContract:XPAdded", async ({ event, context }) => {
   const { XPAddedEvent } = context.db;
 
   await XPAddedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       tokenId: event.args.tokenId,
       amount: event.args.amount,
@@ -274,7 +275,7 @@ ponder.on("LandContract:WareHouseLifetimeAssigned", async ({ event, context }) =
   const { WareHouseLifetimeAssignedEvent } = context.db;
 
   await WareHouseLifetimeAssignedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       plantId: event.args.plantId,
@@ -288,7 +289,7 @@ ponder.on("LandContract:WareHousePlantPointsAssigned", async ({ event, context }
   const { WareHousePlantPointsAssignedEvent } = context.db;
 
   await WareHousePlantPointsAssignedEvent.create({
-    id: `${event.log.transactionHash}-${event.log.logIndex}`,
+    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       landId: event.args.landId,
       plantId: event.args.plantId,

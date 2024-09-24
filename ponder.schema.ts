@@ -6,7 +6,8 @@ export default createSchema((p) => ({
     id: p.bigint(),
     owner: p.string(),
     name: p.string().optional(),
-    // Additional fields can be added here
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // Define the Plant table related to Land
@@ -15,7 +16,8 @@ export default createSchema((p) => ({
     landId: p.bigint().references("Land.id"),
     lifetime: p.bigint(),
     points: p.bigint(),
-    // Additional fields can be added here
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // Event tables related to Land and Plant
@@ -27,6 +29,8 @@ export default createSchema((p) => ({
     plantId: p.bigint().references("Plant.id"),
     lifetime: p.bigint(),
     newLifetime: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // PlantPointsAssigned event
@@ -36,6 +40,8 @@ export default createSchema((p) => ({
     plantId: p.bigint().references("Plant.id"),
     addedPoints: p.bigint(),
     newPlantPoints: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // Transfer event (updates Land owner)
@@ -44,6 +50,8 @@ export default createSchema((p) => ({
     from: p.string(),
     to: p.string(),
     tokenId: p.bigint().references("Land.id"),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // VillageProductionClaimed event
@@ -51,6 +59,8 @@ export default createSchema((p) => ({
     id: p.string(),
     landId: p.bigint().references("Land.id"),
     buildingId: p.int(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // VillageProductionXPClaimCooldownActive event
@@ -60,6 +70,8 @@ export default createSchema((p) => ({
     buildingId: p.bigint(),
     currentTime: p.bigint(),
     cooldownEndTime: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // VillageProductionXPClaimed event
@@ -69,6 +81,8 @@ export default createSchema((p) => ({
     buildingId: p.bigint(),
     claimTime: p.bigint(),
     xpAwarded: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // VillageSpeedUpWithSeed event
@@ -78,6 +92,8 @@ export default createSchema((p) => ({
     buildingId: p.int(),
     speedUpCost: p.bigint(),
     xp: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // VillageUpgradedWithLeaf event
@@ -87,6 +103,8 @@ export default createSchema((p) => ({
     buildingId: p.int(),
     upgradeCost: p.bigint(),
     xp: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // TownSpeedUpWithSeed event
@@ -96,6 +114,8 @@ export default createSchema((p) => ({
     buildingId: p.int(),
     speedUpCost: p.bigint(),
     xp: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // TownUpgradedWithLeaf event
@@ -105,6 +125,8 @@ export default createSchema((p) => ({
     buildingId: p.int(),
     upgradeCost: p.bigint(),
     xp: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // Quest events related to Land
@@ -117,6 +139,8 @@ export default createSchema((p) => ({
     difficulty: p.int(),
     startBlock: p.bigint(),
     endBlock: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // QuestCommitted event
@@ -125,6 +149,8 @@ export default createSchema((p) => ({
     landId: p.bigint().references("Land.id"),
     farmerSlotId: p.bigint(),
     pseudoRndBlock: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // QuestFinalized event
@@ -135,6 +161,8 @@ export default createSchema((p) => ({
     player: p.string(),
     rewardType: p.int(),
     amount: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // QuestReset event
@@ -143,6 +171,8 @@ export default createSchema((p) => ({
     landId: p.bigint().references("Land.id"),
     farmerSlotId: p.bigint(),
     player: p.string(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // XPAdded event (relates to Land)
@@ -150,6 +180,8 @@ export default createSchema((p) => ({
     id: p.string(),
     tokenId: p.bigint().references("Land.id"),
     amount: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // WareHouseLifetimeAssigned event
@@ -159,6 +191,8 @@ export default createSchema((p) => ({
     plantId: p.bigint().references("Plant.id"),
     lifetime: p.bigint(),
     newLifetime: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // WareHousePlantPointsAssigned event
@@ -168,6 +202,8 @@ export default createSchema((p) => ({
     plantId: p.bigint().references("Plant.id"),
     addedPoints: p.bigint(),
     newPlantPoints: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // LandNameChanged event (updates Land name)
@@ -175,6 +211,8 @@ export default createSchema((p) => ({
     id: p.bigint(),
     tokenId: p.bigint().references("Land.id"),
     name: p.string(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 
   // LandMinted event (creates new Land)
@@ -183,5 +221,7 @@ export default createSchema((p) => ({
     to: p.string(),
     tokenId: p.bigint().references("Land.id"),
     mintPrice: p.bigint(),
+    blockHeight: p.bigint(),
+    timestamp: p.bigint(),
   }),
 }));

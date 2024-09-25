@@ -1,5 +1,15 @@
 import { ponder } from "@/generated";
 
+async function getOwnerOf(client: any, LandContract: any, tokenId: bigint) {
+    const ownerOf = await client.readContract({
+      abi: LandContract.abi,
+      address: LandContract.address, 
+      functionName: "ownerOf",
+      args: [tokenId],
+    });
+    return ownerOf;
+  }
+
 ponder.on("LandContract:LandMinted", async ({ event, context }) => {
   const { Land, LandMintedEvent } = context.db;
 
@@ -51,9 +61,21 @@ ponder.on("LandContract:Transfer", async ({ event, context }) => {
 ponder.on("LandContract:LandNameChanged", async ({ event, context }) => {
   const { Land, LandNameChangedEvent } = context.db;
 
-  await Land.update({
+  const { client } = context;
+  const { LandContract } = context.contracts;
+ 
+  // Fetch the owner for the token using the new getOwnerOf function.
+  //const owner = await getOwnerOf(client, LandContract, event.args.tokenId);
+
+  await Land.upsert({
     id: event.args.tokenId,
-    data: {
+    create: {
+      owner: await getOwnerOf(client, LandContract, event.args.tokenId),
+      name: event.args.name,
+      blockHeight: event.block.number,
+      timestamp: event.block.timestamp,
+    },
+    update: {
       name: event.args.name,
       blockHeight: event.block.number,
       timestamp: event.block.timestamp,

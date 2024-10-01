@@ -129,13 +129,28 @@ ponder.on("LandContract:PlantLifetimeAssigned", async ({ event, context }) => {
 ponder.on("LandContract:PlantPointsAssigned", async ({ event, context }) => {
   const { Plant, PlantPointsAssignedEvent } = context.db;
 
-  await Plant.update({
+  // await Plant.upsert({
+  //   id: event.args.plantId,
+  //   data: ({ current }) => ({
+  //     points:  event.args.newPlantPoints,
+  //     blockHeight: event.block.number,
+  //     timestamp: event.block.timestamp,
+  //   }),
+  // });
+  await Plant.upsert({
     id: event.args.plantId,
-    data: ({ current }) => ({
-      points: current.points + event.args.addedPoints,
+    create: {
+      landId: event.args.landId,
+      points: event.args.newPlantPoints,
+      lifetime: 0n,
       blockHeight: event.block.number,
       timestamp: event.block.timestamp,
-    }),
+    },
+    update: {
+      points: event.args.newPlantPoints,
+      blockHeight: event.block.number,
+      timestamp: event.block.timestamp,
+    },
   });
 
   await PlantPointsAssignedEvent.create({

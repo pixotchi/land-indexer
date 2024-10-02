@@ -46,7 +46,7 @@ ponder.on("LandContract:Transfer", async ({ event, context }) => {
     },
   });
 
-  await LandTransferEvent.create({
+/*  await LandTransferEvent.create({
     id: event.args.value,//`${event.log.transactionHash}-${event.log.logIndex}`,
     data: {
       from: event.args.from,
@@ -55,7 +55,7 @@ ponder.on("LandContract:Transfer", async ({ event, context }) => {
       blockHeight: event.block.number,
       timestamp: event.block.timestamp,
     },
-  });
+  });*/
 });
 
 ponder.on("LandContract:LandNameChanged", async ({ event, context }) => {
@@ -82,15 +82,15 @@ ponder.on("LandContract:LandNameChanged", async ({ event, context }) => {
     },
   });
 
-  await LandNameChangedEvent.create({
-    id: event.args.tokenId,//`${event.log.transactionHash}-${event.log.logIndex}`,
-    data: {
-      tokenId: event.args.tokenId,
-      name: event.args.name,
-      blockHeight: event.block.number,
-      timestamp: event.block.timestamp,
-    },
-  });
+  // await LandNameChangedEvent.create({
+  //   id: event.args.tokenId,//`${event.log.transactionHash}-${event.log.logIndex}`,
+  //   data: {
+  //     tokenId: event.args.tokenId,
+  //     name: event.args.name,
+  //     blockHeight: event.block.number,
+  //     timestamp: event.block.timestamp,
+  //   },
+  // });
 });
 
 ponder.on("LandContract:PlantLifetimeAssigned", async ({ event, context }) => {
@@ -340,19 +340,19 @@ ponder.on("LandContract:QuestReset", async ({ event, context }) => {
   });
 });
 
-ponder.on("LandContract:XPAdded", async ({ event, context }) => {
-  const { XPAddedEvent } = context.db;
-
-  await XPAddedEvent.create({
-    id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
-    data: {
-      tokenId: event.args.tokenId,
-      amount: event.args.amount,
-      blockHeight: event.block.number,
-      timestamp: event.block.timestamp,
-    },
-  });
-});
+// ponder.on("LandContract:XPAdded", async ({ event, context }) => {
+//   const { XPAddedEvent } = context.db;
+//
+//   await XPAddedEvent.create({
+//     id: crypto.randomUUID(), //`${event.log.transactionHash}-${event.log.logIndex}`,
+//     data: {
+//       tokenId: event.args.tokenId,
+//       amount: event.args.amount,
+//       blockHeight: event.block.number,
+//       timestamp: event.block.timestamp,
+//     },
+//   });
+// });
 
 ponder.on("LandContract:WareHouseLifetimeAssigned", async ({ event, context }) => {
   const { WareHouseLifetimeAssignedEvent } = context.db;

@@ -3,14 +3,14 @@ import {getAddress, http, webSocket} from "viem";
 
 import { abi } from "./abis/abi";
 import {base} from "viem/chains";
-//import { baseSepolia } from "viem/chains";
+import { baseSepolia } from "viem/chains";
 
 export default createConfig({
   networks: {
     base: {
       //maxRequestsPerSecond: 1000,
 
-      chainId: 8453,
+      chainId: 84532,
       transport:
           loadBalance([
         //http("https://cloudflare-eth.com"),
@@ -21,7 +21,7 @@ export default createConfig({
             //webSocket(process.env.PONDER_RPC_URL_84532_WSS),
         //webSocket(process.env.PONDER_RPC_URL_84532_WSS_2),
         //rateLimit(http(process.env.PONDER_RPC_URL_84532), { requestsPerSecond: 49 }),
-            rateLimit(http(process.env.PONDER_RPC_URL_8453), { requestsPerSecond: 49 }),
+            rateLimit(http(process.env.PONDER_RPC_URL_84532), { requestsPerSecond: 49 }),
             //rateLimit(http(process.env.PONDER_RPC_URL_8453_2), { requestsPerSecond: 49 }),
             //http(process.env.PONDER_RPC_URL_84532),
             //http(process.env.PONDER_RPC_URL_84532_2),
@@ -33,9 +33,9 @@ export default createConfig({
   },
   contracts: {
     LandContract: {
-      network: "base",
+      network: "baseSepolia",
       abi: abi,
-      address: getAddress(process.env.PONDER_LAND_CONTRACT_ADDRESS_8453 as string),
+      address: getAddress(process.env.PONDER_LAND_CONTRACT_ADDRESS_84532 as string),
       startBlock: 20549550,
     },
   },
